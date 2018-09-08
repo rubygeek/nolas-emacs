@@ -22,21 +22,23 @@
   (diminish 1)
   )
 
-(use-package evil
-  :diminish  undo-tree-mode
-  :config
-  (evil-mode 1)
-  )
+;(use-package evil
+;  :diminish  undo-tree-mode
+;  :config
+;  (evil-mode 1)
+;  )
 
 ;; instead of ESC for evil mode use tt 
-(use-package key-chord
-  :init
-  (setq key-chord-two-keys-delay 0.2)
-  (key-chord-define evil-insert-state-map "tt" 'evil-normal-state)
-  :config
-  (key-chord-mode 1)
-  )
+;(use-package key-chord
+;  :init
+;  (setq key-chord-two-keys-delay 0.2)
+;  (key-chord-define evil-insert-state-map "tt" 'evil-normal-state)
+;  :config
+;  (key-chord-mode 1)
+;  )
 
+(use-package cider
+  )
 (use-package clojure-mode
   :init
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)
@@ -62,6 +64,8 @@
   (projectile-global-mode)
   )
 
+(use-package ag
+  )
 
 ;; enhances M-x
 (use-package smex
@@ -129,3 +133,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-dim-other-buffers-face ((t (:background "color-234")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (use-package smex projectile paredit neotree markdown-mode magit key-chord highlight-parentheses helm evil doom-themes diminish clojure-mode-extra-font-locking auto-dim-other-buffers))))
