@@ -1,5 +1,8 @@
 elpa
 init.el~
 projectile-bookmarks.eld
+.recentf
 smex-items
-auto-save-lis
+.smex-items
+auto-save-list/
+ido.last
