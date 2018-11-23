@@ -120,6 +120,7 @@
   (load-theme 'doom-one t)
   )
 
+(setq make-backup-files nil)
 
 
  ;; custom-set-variables was added by Custom.
