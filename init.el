@@ -22,29 +22,17 @@
   (diminish 1)
   )
 
-;(use-package evil
-;  :diminish  undo-tree-mode
-;  :config
-;  (evil-mode 1)
-;  )
-
-;; instead of ESC for evil mode use tt 
-;(use-package key-chord
-;  :init
-;  (setq key-chord-two-keys-delay 0.2)
-;  (key-chord-define evil-insert-state-map "tt" 'evil-normal-state)
-;  :config
-;  (key-chord-mode 1)
-;  )
-
 (use-package cider
   )
+
 (use-package clojure-mode
   :init
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)
   (setq cider-show-error-buffer t
-	ceinter-auto-select-error-buffer t)
-  )
+	ceinter-auto-select-error-buffer t
+	show-paren-delay 0
+	)
+  (show-paren-mode 1))
 
 (use-package auto-dim-other-buffers
   :diminish auto-dim-other-buffers-mode
@@ -80,6 +68,10 @@
   (global-set-key [f8] 'neotree-toggle)
   )
 
+(use-package rainbow-delimiters 
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
@@ -88,32 +80,13 @@
   :init (setq markdown-command "multimarkdown")
   )
 
-(use-package highlight-parentheses
-  :init
-  (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
-  )
+;;(use-package highlight-parentheses
+;;  :init
+;;  (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
+;;  )
 
-(use-package helm
-  :diminish helm-mode
-  :init
-  (setq helm-M-x-fuzzy-match t
-        helm-mode-fuzzy-match t
-        helm-buffers-fuzzy-matching t
-        helm-recentf-fuzzy-match t      
-        helm-locate-fuzzy-match t      
-        helm-semantic-fuzzy-match t      
-        helm-imenu-fuzzy-match t      
-        helm-completion-in-region-fuzzy-match t
-        helm-candidate-number-list 150      
-        helm-split-window-in-side-p t      
-        helm-move-to-line-cycle-in-source t      
-        helm-echo-input-in-header-line t      
-        helm-autoresize-max-height 0      
-        helm-autoresize-min-height 20)      
-  :config
-  (helm-mode 1)
+(use-package ivy
   )
-
 
 (use-package doom-themes
   :config
