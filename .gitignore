@@ -6,3 +6,5 @@ smex-items
 .smex-items
 auto-save-list/
 ido.last
+projectile.cache
+recentf
