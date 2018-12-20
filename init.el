@@ -75,6 +75,21 @@
 ;; Find inside of packages
 (use-package ag)
 
+;; fuzzy matching
+(use-package flx-ido
+  :config
+  (ido-mode 1)
+  (ido-everywhere 1)
+  (flx-ido-mode 1)
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil))
+
+(use-package ivy
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) "))
+
 ;; enhances M-x
 (use-package smex
   :init
