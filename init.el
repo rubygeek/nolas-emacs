@@ -47,7 +47,8 @@
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)
   (setq cider-show-error-buffer t
 	ceinter-auto-select-error-buffer t
-	show-paren-delay 0)
+	show-paren-delay 0
+	cider-default-cljs-repl 'shadow)
   (show-paren-mode 1))
 
 (use-package clojure-mode-extra-font-locking
@@ -55,7 +56,6 @@
 
 (use-package paredit
   :after clojure-mode)
-
 
 ;; Dim the non active buffer
 (use-package auto-dim-other-buffers
