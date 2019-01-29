@@ -25,6 +25,11 @@
   :config
   (diminish 1))
 
+(use-package which-key
+  :config
+  (diminish 1)
+  (which-key-mode 1))
+
 ;; Used to select a group of text and +/- to grab bigger or smaller chunks
 (use-package expand-region
   :init
