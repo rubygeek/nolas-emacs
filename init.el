@@ -62,6 +62,15 @@
 (use-package paredit
   :after clojure-mode)
 
+(use-package company
+  :config
+  (diminish 1)
+  :init
+  (global-company-mode)
+  (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+  (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion))
+
+  
 ;; Dim the non active buffer
 (use-package auto-dim-other-buffers
   :diminish auto-dim-other-buffers-mode
@@ -172,6 +181,40 @@ Assumes that the frame is only split into two."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#1c1f24" "#ff665c" "#7bc275" "#FCCE7B" "#51afef" "#C57BDB" "#5cEfFF" "#DFDFDF"])
+ '(custom-enabled-themes (quote (manoj-dark)))
+ '(custom-safe-themes
+   (quote
+    ("b54826e5d9978d59f9e0a169bbd4739dd927eead3ef65f56786621b53c031a7c" default)))
+ '(fci-rule-color "#62686E")
+ '(jdee-db-active-breakpoint-face-colors (cons "#1c1f24" "#51afef"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1c1f24" "#7bc275"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1c1f24" "#484854"))
+ '(objed-cursor-color "#ff665c")
  '(package-selected-packages
    (quote
-    (zprint-mode magit key-chord highlight-parentheses helm diminish clojure-mode-extra-font-locking))))
+    (undo-tree json-navigator zprint-mode magit key-chord highlight-parentheses helm diminish clojure-mode-extra-font-locking)))
+ '(pdf-view-midnight-colors (cons "#242730" "#bbc2cf"))
+ '(vc-annotate-background "#242730")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#7bc275")
+    (cons 40 "#a6c677")
+    (cons 60 "#d1ca79")
+    (cons 80 "#FCCE7B")
+    (cons 100 "#f4b96e")
+    (cons 120 "#eda461")
+    (cons 140 "#e69055")
+    (cons 160 "#db8981")
+    (cons 180 "#d082ae")
+    (cons 200 "#C57BDB")
+    (cons 220 "#d874b0")
+    (cons 240 "#eb6d86")
+    (cons 260 "#ff665c")
+    (cons 280 "#d15e59")
+    (cons 300 "#a35758")
+    (cons 320 "#754f56")
+    (cons 340 "#62686E")
+    (cons 360 "#62686E")))
+ '(vc-annotate-very-old-color nil))
