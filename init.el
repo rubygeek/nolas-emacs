@@ -15,7 +15,7 @@
 (setq use-package-always-ensure t)      ; always install packages 
 (setq sentence-end-double-space nil)    ; sentence SHOULD end with only a point.
 (setq default-fill-column 80)           ; toggle wrapping text at the 80th character
-(setq initial-scratch-message "Hello Nola") ; print a default message in the empty scratch buffer opened at startup
+
 
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
@@ -46,8 +46,24 @@
          ("C-<"     . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
+;; indicate clojure lint warnings
+(use-package flycheck
+  :init
+  (global-flycheck-mode)
+  :config
+  (set-face-attribute 'flycheck-error nil :underline '(:color "red2" :style wave)))
+
+(use-package flycheck-color-mode-line
+  :requires flycheck
+  :hook (flycheck-mode . flycheck-color-mode-line-mode))
+
+(use-package flycheck-clj-kondo)
+
 ;; For Clojure duh
 (use-package clojure-mode
+  :after flycheck-clj-kondo
+  :config
+  (require 'flycheck-clj-kondo)
   :init
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)
   (setq cider-show-error-buffer t
@@ -110,6 +126,23 @@
   (smex-initialize)
   :config
   (global-set-key (kbd "M-x") 'smex))
+
+
+;; highlight same named things
+(use-package highlight)
+
+(use-package highlight-symbol
+  :config
+  (global-set-key [(control f3)] 'highlight-symbol)
+  (global-set-key [f3] 'highlight-symbol-next)
+  (global-set-key [(shift f3)] 'highlight-symbol-prev)
+  (global-set-key [(meta f3)] 'highlight-symbol-query-replace))
+
+(use-package idle-highlight-mode
+  :config
+  (set-face-foreground 'region "white")
+  (set-face-background 'region "blue")
+  :hook prog-mode)
 
 ;; like nerdtree for vim
 (use-package neotree
@@ -194,7 +227,7 @@ Assumes that the frame is only split into two."
  '(objed-cursor-color "#ff665c")
  '(package-selected-packages
    (quote
-    (undo-tree json-navigator zprint-mode magit key-chord highlight-parentheses helm diminish clojure-mode-extra-font-locking)))
+    (dumb-jump undo-tree json-navigator zprint-mode magit key-chord highlight-parentheses helm diminish clojure-mode-extra-font-locking)))
  '(pdf-view-midnight-colors (cons "#242730" "#bbc2cf"))
  '(vc-annotate-background "#242730")
  '(vc-annotate-color-map
@@ -218,3 +251,4 @@ Assumes that the frame is only split into two."
     (cons 340 "#62686E")
     (cons 360 "#62686E")))
  '(vc-annotate-very-old-color nil))
+(put 'downcase-region 'disabled nil)
