@@ -46,6 +46,11 @@
          ("C-<"     . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
+;; Using git
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
+
 ;; indicate clojure lint warnings
 (use-package flycheck
   :init
@@ -227,7 +232,7 @@ Assumes that the frame is only split into two."
  '(objed-cursor-color "#ff665c")
  '(package-selected-packages
    (quote
-    (dumb-jump undo-tree json-navigator zprint-mode magit key-chord highlight-parentheses helm diminish clojure-mode-extra-font-locking)))
+    (dumb-jump undo-tree json-navigator zprint-mode key-chord highlight-parentheses helm diminish clojure-mode-extra-font-locking)))
  '(pdf-view-midnight-colors (cons "#242730" "#bbc2cf"))
  '(vc-annotate-background "#242730")
  '(vc-annotate-color-map
